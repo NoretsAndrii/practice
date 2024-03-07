@@ -6,6 +6,11 @@ let allChecked = document.querySelectorAll(".checkbox");
 
 addBtn.addEventListener("click", addTask);
 
+input.addEventListener("input", (event) => {
+  console.log(event.target.value.trim());
+  input.value = event.target.value.trim() ? event.target.value : "";
+});
+
 // container.addEventListener("click", handlerClick);
 
 function addTask(event) {
