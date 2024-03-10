@@ -1,6 +1,8 @@
 const input = document.querySelector(".render-input");
 const usersList = document.querySelector(".users-list");
 
+let users;
+
 async function usersData() {
   return await fetch(`https://jsonplaceholder.typicode.com/users`).then(
     (response) => {
@@ -13,7 +15,7 @@ async function usersData() {
 }
 
 async function getUsersData() {
-  const users = await usersData();
+  users = await usersData();
   console.log(users);
   usersList.innerHTML = createContent(users);
 }
@@ -33,11 +35,16 @@ function filterUsers(event) {
   }
   const inputValue = input.value.trim().toLowerCase();
   usersListItem.forEach((elem) => {
-    console.log(1);
-    !elem.innerText.toLowerCase().startsWith(inputValue)
+    !elem.textContent.toLowerCase().startsWith(inputValue)
       ? elem.classList.add("hidden")
       : elem.classList.remove("hidden");
   });
+
+  // const inputValue = input.value.trim().toLowerCase();
+  // const usersFiltered = users.filter((user) =>
+  //   user.name.toLowerCase().startsWith(inputValue)
+  // );
+  // usersList.innerHTML = createContent(usersFiltered);
 }
 
 getUsersData();
