@@ -8,6 +8,7 @@ function handleSubmit(event) {
   const delay = formEl.delay.value;
   const promisStatus = formEl.state.value;
   console.log(promisStatus);
+  form.reset();
 
   createPromise(delay, promisStatus)
     .then((massege) => console.log(massege))
